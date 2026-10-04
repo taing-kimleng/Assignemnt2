@@ -3,14 +3,12 @@ import { View, Text, ScrollView, Pressable, StyleSheet } from "react-native";
 import ClassCard from "../components/ClassCard";
 import { weeklySchedule } from "../data/mockData";
 
-// ScheduleScreen with day filter selector < Mon | Tue | Wed | Thu | Fri >
 export default function ScheduleScreen({ navigation, theme }) {
   const [selectedDay, setSelectedDay] = useState("Mon");
 
   const activeGroup = weeklySchedule.find((g) => g.day === selectedDay) || weeklySchedule[0];
 
   const handleOpenDetail = (classItem) => {
-    // Gesture 1: Open Class Detail on long press
     navigation.navigate("ClassDetail", { classItem });
   };
 
@@ -25,7 +23,6 @@ export default function ScheduleScreen({ navigation, theme }) {
         Long press for details
       </Text>
 
-      {/* Day Indicator Bar < Mon | Tue | Wed | Thu | Fri > */}
       <View style={[styles.daySelector, { backgroundColor: theme.card, borderColor: theme.border }]}>
         {weeklySchedule.map((group) => {
           const isSelected = selectedDay === group.day;
@@ -51,7 +48,6 @@ export default function ScheduleScreen({ navigation, theme }) {
         })}
       </View>
 
-      {/* Selected Day Header & Classes */}
       <View style={styles.dayHeaderRow}>
         <Text style={[styles.fullDayTitle, { color: theme.text }]}>{activeGroup.fullDay}</Text>
         <Text style={[styles.classCountText, { color: theme.secondaryText }]}>

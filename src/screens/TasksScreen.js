@@ -2,18 +2,16 @@ import React, { useState } from "react";
 import { View, Text, ScrollView, Pressable, StyleSheet } from "react-native";
 import TaskItem from "../components/TaskItem";
 
-// TasksScreen with Category Tabs (All | Today | Upcoming | Completed) & Progress Indicator
 export default function TasksScreen({ theme, tasks, onToggleTask }) {
   const [activeTab, setActiveTab] = useState("All");
 
   const completedCount = tasks.filter((t) => t.done).length;
 
-  // Filter tasks based on selected tab
   const filteredTasks = tasks.filter((t) => {
     if (activeTab === "Today") return !t.done && t.due.includes("today");
     if (activeTab === "Upcoming") return !t.done && t.due.includes("tomorrow");
     if (activeTab === "Completed") return t.done;
-    return true; // "All"
+    return true;
   });
 
   const tabs = ["All", "Today", "Upcoming", "Completed"];
@@ -24,7 +22,6 @@ export default function TasksScreen({ theme, tasks, onToggleTask }) {
       contentContainerStyle={[styles.content, { maxWidth: 1000, alignSelf: "center", width: "100%" }]}
       showsVerticalScrollIndicator={false}
     >
-      {/* Title & Progress Summary */}
       <View style={styles.headerRow}>
         <Text style={[styles.screenTitle, { color: theme.text }]}>Tasks</Text>
         <View style={[styles.progressPill, { backgroundColor: theme.primaryLight }]}>
@@ -38,7 +35,6 @@ export default function TasksScreen({ theme, tasks, onToggleTask }) {
         👉 Swipe right to mark task complete
       </Text>
 
-      {/* Filter Tabs Header */}
       <View style={[styles.tabsRow, { borderBottomColor: theme.border }]}>
         {tabs.map((tab) => {
           const isSelected = activeTab === tab;
@@ -65,7 +61,6 @@ export default function TasksScreen({ theme, tasks, onToggleTask }) {
         })}
       </View>
 
-      {/* Filtered Task Items List */}
       {filteredTasks.length === 0 ? (
         <View style={styles.emptyContainer}>
           <Text style={[styles.emptyText, { color: theme.secondaryText }]}>No tasks found.</Text>

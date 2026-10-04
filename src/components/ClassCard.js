@@ -2,13 +2,11 @@ import React from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-// ClassCard component - neutral card design with small colored accent icon
 export default function ClassCard({ item, theme, onLongPress, style }) {
   const accentColor = item.color || theme.primary;
 
   return (
     <Pressable
-      // Gesture 1: Long Press to open Class Detail screen
       onLongPress={() => onLongPress && onLongPress(item)}
       delayLongPress={400}
       style={({ pressed }) => [

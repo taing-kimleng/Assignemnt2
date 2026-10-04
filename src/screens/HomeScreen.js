@@ -16,7 +16,6 @@ export default function HomeScreen({ navigation, theme, classes, tasks, onToggle
   const { width } = useWindowDimensions();
   const isLargeScreen = width >= 600;
 
-  // Animation 2: Scale animation for "+ Add Task" button press feedback
   const buttonScale = useRef(new Animated.Value(1)).current;
 
   const handlePressIn = () => {
@@ -38,7 +37,6 @@ export default function HomeScreen({ navigation, theme, classes, tasks, onToggle
     navigation.navigate("ClassDetail", { classItem });
   };
 
-  // Calculate task summary count
   const completedCount = tasks.filter((t) => t.done).length;
 
   return (
@@ -47,7 +45,6 @@ export default function HomeScreen({ navigation, theme, classes, tasks, onToggle
       contentContainerStyle={[styles.content, { maxWidth: 1000, alignSelf: "center", width: "100%" }]}
       showsVerticalScrollIndicator={false}
     >
-      {/* 1. HEADER */}
       <View style={styles.header}>
         <Text style={[styles.greetingSub, { color: theme.secondaryText }]}>Good morning,</Text>
         <Text style={[styles.greetingName, { color: theme.text }]}>Leng 👋</Text>
@@ -56,7 +53,6 @@ export default function HomeScreen({ navigation, theme, classes, tasks, onToggle
         </Text>
       </View>
 
-      {/* 2. NEXT CLASS CARD (Practical, smaller card with subtle progress line) */}
       <Pressable
         onPress={() => handleOpenDetail(classes[0])}
         style={({ pressed }) => [
@@ -70,7 +66,6 @@ export default function HomeScreen({ navigation, theme, classes, tasks, onToggle
       >
         <View style={styles.nextClassTop}>
           <Text style={[styles.nextClassBadge, { color: theme.primary }]}>NEXT CLASS</Text>
-          <Text style={[styles.countdownText, { color: theme.secondaryText }]}>Starts in 20 min</Text>
         </View>
 
         <Text style={[styles.nextClassTitle, { color: theme.text }]}>
@@ -83,14 +78,8 @@ export default function HomeScreen({ navigation, theme, classes, tasks, onToggle
             {" 08:00 – 10:00 · Room E4.4"}
           </Text>
         </View>
-
-        {/* Subtle time progress bar */}
-        <View style={[styles.progressBarBg, { backgroundColor: theme.primaryLight }]}>
-          <View style={[styles.progressBarFill, { backgroundColor: theme.primary }]} />
-        </View>
       </Pressable>
 
-      {/* 3. TODAY'S CLASSES */}
       <View style={styles.sectionHeader}>
         <Text style={[styles.sectionTitle, { color: theme.text }]}>Today's Classes</Text>
         <Pressable onPress={() => navigation.navigate("Schedule")}>
@@ -114,7 +103,6 @@ export default function HomeScreen({ navigation, theme, classes, tasks, onToggle
         ))}
       </View>
 
-      {/* 4. TODAY'S TASKS */}
       <View style={styles.sectionHeader}>
         <View style={styles.sectionTitleRow}>
           <Text style={[styles.sectionTitle, { color: theme.text }]}>Today's Tasks</Text>
@@ -131,7 +119,6 @@ export default function HomeScreen({ navigation, theme, classes, tasks, onToggle
         <TaskItem key={item.id} item={item} theme={theme} onToggle={onToggleTask} />
       ))}
 
-      {/* 5. ADD TASK BUTTON (Simplified, clean button) */}
       <Animated.View style={{ transform: [{ scale: buttonScale }] }}>
         <Pressable
           onPressIn={handlePressIn}
@@ -188,10 +175,6 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     letterSpacing: 0.5,
   },
-  countdownText: {
-    fontSize: 12,
-    fontWeight: "500",
-  },
   nextClassTitle: {
     fontSize: 18,
     fontWeight: "700",
@@ -200,21 +183,10 @@ const styles = StyleSheet.create({
   nextClassFooter: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 12,
   },
   nextClassDetail: {
     fontSize: 13,
     fontWeight: "500",
-  },
-  progressBarBg: {
-    height: 4,
-    borderRadius: 2,
-    overflow: "hidden",
-  },
-  progressBarFill: {
-    width: "35%",
-    height: "100%",
-    borderRadius: 2,
   },
   sectionHeader: {
     flexDirection: "row",

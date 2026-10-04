@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-// ClassDetailScreen - opened via Stack Navigation (Gesture 1)
 export default function ClassDetailScreen({ route, theme }) {
   const classItem = route.params?.classItem || {
     name: "Mobile Development",
@@ -23,7 +22,6 @@ export default function ClassDetailScreen({ route, theme }) {
       contentContainerStyle={[styles.content, { maxWidth: 1000, alignSelf: "center", width: "100%" }]}
       showsVerticalScrollIndicator={false}
     >
-      {/* Header Info Card */}
       <View style={[styles.heroCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
         <View style={[styles.iconBox, { backgroundColor: accentColor + "15" }]}>
           <Ionicons name={classItem.icon || "book"} size={32} color={accentColor} />
@@ -32,9 +30,7 @@ export default function ClassDetailScreen({ route, theme }) {
         <Text style={[styles.timeText, { color: theme.secondaryText }]}>{classItem.time}</Text>
       </View>
 
-      {/* Details List Card */}
       <View style={[styles.detailCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
-        {/* Room */}
         <View style={styles.infoRow}>
           <Ionicons name="location-outline" size={18} color={theme.secondaryText} style={styles.infoIcon} />
           <View>
@@ -45,7 +41,6 @@ export default function ClassDetailScreen({ route, theme }) {
 
         <View style={[styles.divider, { backgroundColor: theme.border }]} />
 
-        {/* Teacher */}
         <View style={styles.infoRow}>
           <Ionicons name="person-outline" size={18} color={theme.secondaryText} style={styles.infoIcon} />
           <View>
@@ -56,7 +51,6 @@ export default function ClassDetailScreen({ route, theme }) {
 
         <View style={[styles.divider, { backgroundColor: theme.border }]} />
 
-        {/* Today's Topic */}
         <View style={styles.infoRow}>
           <Ionicons name="book-outline" size={18} color={theme.secondaryText} style={styles.infoIcon} />
           <View>
@@ -68,7 +62,6 @@ export default function ClassDetailScreen({ route, theme }) {
         </View>
       </View>
 
-      {/* Note Section */}
       <Text style={[styles.sectionTitle, { color: theme.text }]}>Class Note</Text>
       <View style={[styles.noteCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
         <Ionicons name="document-text-outline" size={18} color={theme.primary} style={{ marginRight: 10, marginTop: 2 }} />

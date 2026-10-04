@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { View, Text, ScrollView, Pressable, Switch, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-// ProfileScreen with realistic student details & theme switcher
 export default function ProfileScreen({ theme, appearanceMode, setAppearanceMode }) {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
@@ -20,7 +19,6 @@ export default function ProfileScreen({ theme, appearanceMode, setAppearanceMode
     >
       <Text style={[styles.screenTitle, { color: theme.text }]}>Profile</Text>
 
-      {/* Student Profile Info Card */}
       <View style={[styles.profileCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
         <View style={[styles.avatar, { backgroundColor: theme.primary }]}>
           <Text style={styles.avatarText}>L</Text>
@@ -42,7 +40,6 @@ export default function ProfileScreen({ theme, appearanceMode, setAppearanceMode
         </View>
       </View>
 
-      {/* Appearance Setting Section */}
       <Text style={[styles.sectionTitle, { color: theme.text }]}>Appearance</Text>
       <View style={[styles.settingsCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
         {options.map((opt, index) => {
@@ -80,10 +77,8 @@ export default function ProfileScreen({ theme, appearanceMode, setAppearanceMode
         })}
       </View>
 
-      {/* Preferences Section */}
       <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 20 }]}>Settings</Text>
       <View style={[styles.settingsCard, { backgroundColor: theme.card, borderColor: theme.border }]}>
-        {/* Notifications Row */}
         <View style={[styles.optionRow, { borderBottomWidth: 1, borderBottomColor: theme.border }]}>
           <View style={styles.optionLeft}>
             <Ionicons name="notifications-outline" size={18} color={theme.secondaryText} style={styles.optionIcon} />
@@ -96,7 +91,6 @@ export default function ProfileScreen({ theme, appearanceMode, setAppearanceMode
           />
         </View>
 
-        {/* About App Row */}
         <View style={styles.optionRow}>
           <View style={styles.optionLeft}>
             <Ionicons name="information-circle-outline" size={18} color={theme.secondaryText} style={styles.optionIcon} />

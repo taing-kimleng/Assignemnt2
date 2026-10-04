@@ -1,5 +1,3 @@
-// Color definitions for Light and Dark themes
-
 export const lightTheme = {
   background: "#F6F8FC",
   card: "#FFFFFF",

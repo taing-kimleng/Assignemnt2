@@ -1,5 +1,3 @@
-// Local mock data for student classes and tasks
-
 export const initialClasses = [
   {
     id: "1",

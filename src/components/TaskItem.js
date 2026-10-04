@@ -9,12 +9,8 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-// TaskItem component - simple row with Swipe Right (Gesture 2) & completion animation (Animation 1)
 export default function TaskItem({ item, theme, onToggle }) {
-  // Animation 1: Animated scale value for task completion pulse
   const scaleAnim = useRef(new Animated.Value(1)).current;
-
-  // Gesture 2: PanResponder to detect Swipe Right
   const panX = useRef(new Animated.Value(0)).current;
 
   const panResponder = useRef(
@@ -41,7 +37,6 @@ export default function TaskItem({ item, theme, onToggle }) {
     })
   ).current;
 
-  // Trigger Animation 1 (Task Completion Scale Pulse)
   const triggerCompletionAnimation = () => {
     Animated.sequence([
       Animated.timing(scaleAnim, {
@@ -83,7 +78,6 @@ export default function TaskItem({ item, theme, onToggle }) {
           },
         ]}
       >
-        {/* Checkbox Icon */}
         <View
           style={[
             styles.checkbox,
@@ -95,7 +89,6 @@ export default function TaskItem({ item, theme, onToggle }) {
           {item.done && <Ionicons name="checkmark" size={12} color="#FFFFFF" />}
         </View>
 
-        {/* Task Title */}
         <Text
           style={[
             styles.title,
@@ -107,7 +100,6 @@ export default function TaskItem({ item, theme, onToggle }) {
           {item.title}
         </Text>
 
-        {/* Due Status Tag */}
         <Text
           style={[
             styles.dueTag,

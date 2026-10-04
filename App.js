@@ -5,11 +5,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 
-// Import theme configuration and mock data
 import { lightTheme, darkTheme } from "./src/constants/theme";
 import { initialClasses, initialTasks } from "./src/data/mockData";
 
-// Import app screens
 import HomeScreen from "./src/screens/HomeScreen";
 import ScheduleScreen from "./src/screens/ScheduleScreen";
 import TasksScreen from "./src/screens/TasksScreen";
@@ -19,12 +17,11 @@ import ClassDetailScreen from "./src/screens/ClassDetailScreen";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-// Bottom Tab Navigator Component strictly matching reference template icons
 function BottomTabs({ theme, classes, tasks, onToggleTask, appearanceMode, setAppearanceMode }) {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        headerShown: false, // Clean header matching the reference screen design
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: theme.card,
           borderTopColor: theme.border,
@@ -90,11 +87,10 @@ function BottomTabs({ theme, classes, tasks, onToggleTask, appearanceMode, setAp
   );
 }
 
-// Main Root Component
 export default function App() {
   const systemColorScheme = useColorScheme();
 
-  const [appearanceMode, setAppearanceMode] = useState("System"); // "Light" | "Dark" | "System"
+  const [appearanceMode, setAppearanceMode] = useState("System");
   const [classes] = useState(initialClasses);
   const [tasks, setTasks] = useState(initialTasks);
 
